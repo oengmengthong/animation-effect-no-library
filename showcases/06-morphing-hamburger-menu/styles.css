@@ -1,0 +1,35 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background: #f0f0f0;
+}
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+svg path {
+  fill: none;
+  stroke: #333;
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: d 0.3s ease, opacity 0.3s ease;
+}
+button.open #line1 {
+  d: path("M30 30 L70 70");
+}
+button.open #line2 {
+  d: path("M30 70 L70 30");
+}
+button.open #line3 {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  svg path {
+    transition: none;
+  }
+}
