@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+  font-family: system-ui, sans-serif;
+}
+
+.buttons {
+  display: flex;
+  gap: 2rem;
+}
+
+.magnet {
+  padding: 1rem 2rem;
+  background: #6200ea;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .magnet {
+    transition: none;
+  }
+}
