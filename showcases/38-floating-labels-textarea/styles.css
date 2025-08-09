@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+.field {
+  position: relative;
+  width: 300px;
+}
+textarea {
+  width: 100%;
+  padding: 1.2rem .5rem .5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+label {
+  position: absolute;
+  left: .5rem;
+  top: .8rem;
+  background: #fff;
+  padding: 0 .25rem;
+  color: #777;
+  transition: transform .2s, font-size .2s;
+  pointer-events: none;
+}
+textarea:focus + label,
+textarea:not(:placeholder-shown) + label {
+  transform: translateY(-1.1rem) scale(.85);
+}
+textarea:focus {
+  outline-color: #0077ff;
+}
+@media (prefers-reduced-motion: reduce) {
+  label { transition: none; }
+}
