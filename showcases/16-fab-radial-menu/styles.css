@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: system-ui, sans-serif;
+  background: #f0f0f0;
+}
+.fab {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+}
+.fab-main {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: #6200ee;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.fab-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.fab-menu li {
+  position: absolute;
+  transform: translate(0,0) scale(0);
+  transition: transform 0.3s;
+}
+.fab-menu button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #03dac5;
+  color: #000;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.fab.open .fab-menu li {
+  transform: scale(1);
+}
+.fab.open .fab-menu li:nth-child(1) {
+  transform: translate(0,-80px) scale(1);
+}
+.fab.open .fab-menu li:nth-child(2) {
+  transform: translate(-56px,-56px) scale(1);
+}
+.fab.open .fab-menu li:nth-child(3) {
+  transform: translate(-80px,0) scale(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .fab-menu li {
+    transition: none;
+  }
+}
