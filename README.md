@@ -191,7 +191,3 @@ MIT. Use in your projects freely.
 	2.	Follow the folder template and rules.
 	3.	Keep the demo self-contained and documented in its README.md.
 	4.	Submit PR with a short preview GIF (optional).
-
-⸻
-
-Want me to scaffold the folders and placeholder files for all 100 items too? I can generate the full tree and boilerplate in one go.
