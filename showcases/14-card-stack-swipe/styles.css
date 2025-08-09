@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+  font-family: system-ui, sans-serif;
+}
+.deck {
+  position: relative;
+  width: 300px;
+  height: 400px;
+}
+.card {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  will-change: transform;
+  transition: transform 0.3s ease;
+}
+.card:nth-child(1) { background: #e74c3c; }
+.card:nth-child(2) { background: #3498db; }
+.card:nth-child(3) { background: #27ae60; }
