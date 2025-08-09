@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+.wrapper {
+  height: 300vh;
+}
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+.scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: #fff;
+  will-change: transform, opacity;
+}
+.scene1 { background: #e74c3c; }
+.scene2 { background: #3498db; }
+.scene3 { background: #27ae60; }

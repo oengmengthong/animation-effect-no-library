@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, sans-serif;
+  overflow: hidden;
+}
+main {
+  position: relative;
+  z-index: 1;
+}
+.curtain {
+  position: fixed;
+  top: 0;
+  width: 50%;
+  height: 100vh;
+  background: #111;
+  z-index: 2;
+  animation: open 1s ease forwards;
+}
+.curtain.left {
+  left: 0;
+  transform-origin: left;
+}
+.curtain.right {
+  right: 0;
+  transform-origin: right;
+}
+@keyframes open {
+  to {
+    transform: scaleX(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .curtain {
+    animation: none;
+    display: none;
+  }
+}

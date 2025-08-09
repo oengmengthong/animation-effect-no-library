@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, sans-serif;
+}
+.tabs {
+  position: relative;
+  display: flex;
+  border-bottom: 2px solid #ccc;
+}
+.tab {
+  background: none;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.tab:focus {
+  outline: 2px solid;
+  outline-offset: 2px;
+}
+.underline {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  background: #000;
+  width: 0;
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(.34,1.56,.64,1), width 0.4s cubic-bezier(.34,1.56,.64,1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .underline {
+    transition: none;
+  }
+}
