@@ -1,0 +1,16 @@
+html, body { height: 100%; margin: 0; }
+.hero {
+  width: 100%;
+  height: 100%;
+  background-image: url('https://picsum.photos/1200/800?image=1074');
+  background-size: 110% 110%;
+  background-position: center;
+  animation: kenburns 20s ease-in-out infinite alternate;
+}
+@keyframes kenburns {
+  from { transform: scale(1) translate(0,0); }
+  to { transform: scale(1.1) translate(-2%, -2%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero { animation: none; }
+}

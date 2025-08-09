@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+button {
+  position: relative;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+#badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: red;
+  color: #fff;
+  border-radius: 50%;
+  padding: 0 6px;
+  font-size: .75rem;
+  transform: scale(0);
+  transform-origin: top right;
+  transition: transform .3s;
+}
+button.has-badge #badge {
+  transform: scale(1);
+}
+button.shake {
+  animation: shake .5s;
+}
+@keyframes shake {
+  0%,100% { transform: rotate(0); }
+  20% { transform: rotate(-15deg); }
+  40% { transform: rotate(10deg); }
+  60% { transform: rotate(-10deg); }
+  80% { transform: rotate(5deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  button.shake { animation: none; }
+  #badge { transition: none; }
+}
