@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #fafafa;
+}
+.progress {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  width: 80%;
+  max-width: 400px;
+}
+.progress li {
+  flex: 1;
+  position: relative;
+  text-align: center;
+  padding: 10px 0;
+  background: #e0e0e0;
+  color: #666;
+  transition: background 0.3s, color 0.3s;
+}
+.progress li.active,
+.progress li.complete {
+  background: #6200ee;
+  color: #fff;
+}
+.progress li::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 0;
+  height: 4px;
+  background: #6200ee;
+  transform: translateY(-50%);
+  transition: width 0.3s;
+}
+.progress li.complete::after {
+  width: 100%;
+}
+.progress li:last-child::after {
+  display: none;
+}
+button {
+  padding: 8px 16px;
+  border: none;
+  background: #6200ee;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .progress li,
+  .progress li::after {
+    transition: none;
+  }
+}

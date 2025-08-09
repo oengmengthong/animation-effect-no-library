@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+#pull {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: #6200ee;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-100%);
+}
+#content {
+  padding: 60px 20px 20px;
+  line-height: 1.6;
+}
+@media (prefers-reduced-motion: reduce) {
+  #pull {
+    transition: none !important;
+  }
+}
