@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e0e5ec;
+  font-family: system-ui, sans-serif;
+}
+
+.toggle {
+  --size: 80px;
+  position: relative;
+  width: var(--size);
+  height: calc(var(--size) / 2);
+  border: none;
+  border-radius: calc(var(--size) / 2);
+  background: #e0e5ec;
+  box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff;
+  cursor: pointer;
+  padding: 0;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.toggle .knob {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(var(--size) / 2 - 8px);
+  height: calc(var(--size) / 2 - 8px);
+  border-radius: 50%;
+  background: #e0e5ec;
+  box-shadow: 6px 6px 10px #a3b1c6, -6px -6px 10px #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.toggle:active .knob {
+  box-shadow: inset 6px 6px 10px #a3b1c6, inset -6px -6px 10px #ffffff;
+}
+
+.toggle[aria-checked="true"] {
+  box-shadow: inset 8px 8px 15px #a3b1c6, inset -8px -8px 15px #ffffff;
+}
+
+.toggle[aria-checked="true"] .knob {
+  transform: translateX(40px);
+  box-shadow: inset 6px 6px 10px #a3b1c6, inset -6px -6px 10px #ffffff;
+}
+
+.toggle:focus {
+  outline: 2px solid #4d90fe;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toggle,
+  .toggle .knob {
+    transition: none;
+  }
+}
