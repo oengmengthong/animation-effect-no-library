@@ -1,0 +1,31 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f0f0f0;
+  font-family: sans-serif;
+}
+.box {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+}
+.meter {
+  height: 6px;
+  background: #ddd;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: .5rem;
+}
+.bar {
+  height: 100%;
+  width: 0;
+  background: red;
+  transition: width .3s ease, background .3s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bar {
+    transition: none;
+  }
+}

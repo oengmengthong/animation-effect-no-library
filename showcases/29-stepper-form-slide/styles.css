@@ -1,0 +1,33 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: sans-serif;
+}
+#wizard {
+  width: 260px;
+  overflow: hidden;
+}
+.steps {
+  display: flex;
+  transition: transform .3s ease;
+}
+.step {
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.step[aria-hidden="true"] {
+  pointer-events: none;
+}
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .steps {
+    transition: none;
+  }
+}
