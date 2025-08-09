@@ -1,0 +1,47 @@
+body {
+  font-family: sans-serif;
+  padding: 2rem;
+}
+.tabs {
+  display: flex;
+  gap: .5rem;
+}
+.tabs button {
+  position: relative;
+  padding: .5rem 1rem;
+  background: #e0e0e0;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+.tabs button::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 50%;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: transform .4s, opacity .4s;
+}
+.tabs button.ripple::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+.panels {
+  margin-top: 1rem;
+}
+.panel {
+  display: none;
+}
+.panel.active {
+  display: block;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tabs button::after {
+    transition: none;
+  }
+}

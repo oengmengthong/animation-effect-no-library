@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tabs with Ink Ripple</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-target="one">One</button>
+    <button role="tab" aria-selected="false" data-target="two">Two</button>
+    <button role="tab" aria-selected="false" data-target="three">Three</button>
+  </div>
+  <div class="panels">
+    <div id="one" class="panel active">First panel</div>
+    <div id="two" class="panel">Second panel</div>
+    <div id="three" class="panel">Third panel</div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

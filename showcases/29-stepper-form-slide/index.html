@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stepper Form with Slide</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <form id="wizard">
+    <div class="steps">
+      <div class="step active" aria-hidden="false">
+      <label>Name <input type="text" required></label>
+      <button type="button" class="next">Next</button>
+    </div>
+    <div class="step" aria-hidden="true">
+      <label>Email <input type="email" required></label>
+      <div class="actions">
+        <button type="button" class="prev">Back</button>
+        <button type="submit">Submit</button>
+      </div>
+      </div>
+    </div>
+  </form>
+  <script src="script.js"></script>
+</body>
+</html>

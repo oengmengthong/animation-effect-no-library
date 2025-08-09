@@ -1,0 +1,48 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: sans-serif;
+}
+.field {
+  position: relative;
+  margin-bottom: 1rem;
+}
+input {
+  padding: .75rem .5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+label {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  padding: 0 4px;
+  color: #777;
+  transition: .2s ease;
+  pointer-events: none;
+}
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label {
+  top: 0;
+  transform: translateY(-100%);
+  font-size: .75rem;
+  color: #333;
+}
+.form.shake .field {
+  animation: shake .3s;
+}
+@keyframes shake {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(2px); }
+  30%, 50%, 70% { transform: translateX(-4px); }
+  40%, 60% { transform: translateX(4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .form.shake .field {
+    animation: none;
+  }
+}

@@ -1,0 +1,29 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: sans-serif;
+}
+.rating {
+  display: flex;
+}
+.star {
+  font-size: 2.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ccc;
+  transition: color .2s ease;
+}
+.star.hover,
+.star.selected {
+  color: gold;
+}
+.star.hover {
+  transition-delay: calc(var(--i) * 60ms);
+}
+.rating[data-motion="no"] .star.hover {
+  transition-delay: 0ms;
+}

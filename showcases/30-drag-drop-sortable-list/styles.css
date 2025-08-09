@@ -1,0 +1,28 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: sans-serif;
+}
+#sortable {
+  list-style: none;
+  padding: 0;
+  width: 200px;
+}
+#sortable li {
+  padding: .5rem 1rem;
+  margin-bottom: .25rem;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  cursor: move;
+  transition: transform .2s;
+}
+#sortable li.dragging {
+  opacity: .5;
+}
+@media (prefers-reduced-motion: reduce) {
+  #sortable li {
+    transition: none;
+  }
+}
