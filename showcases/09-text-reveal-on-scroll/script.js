@@ -1,16 +1,20 @@
-const blocks = document.querySelectorAll('.reveal');
-const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const sections = document.querySelectorAll('.reveal');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-if (motion.matches) {
-  blocks.forEach(b => b.classList.add('visible'));
+if (prefersReducedMotion.matches) {
+  sections.forEach(section => section.classList.add('visible'));
 } else {
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
+  const observer = new IntersectionObserver((entries, obs) => {
+    for (const entry of entries) {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        io.unobserve(entry.target);
+        obs.unobserve(entry.target);
       }
-    });
-  }, { threshold: 0.2 });
-  blocks.forEach(b => io.observe(b));
+    }
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -10% 0px'
+  });
+
+  sections.forEach(section => observer.observe(section));
 }
