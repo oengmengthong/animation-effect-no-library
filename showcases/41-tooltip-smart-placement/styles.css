@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, sans-serif;
+}
+
+button {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+}
+
+.tooltip {
+  position: fixed;
+  padding: 0.4rem 0.6rem;
+  background: #333;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+.tooltip[data-show] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: inherit;
+  transform: rotate(45deg);
+}
+
+.tooltip[data-placement="top"]::after {
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.tooltip[data-placement="bottom"]::after {
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.tooltip[data-placement="left"]::after {
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.tooltip[data-placement="right"]::after {
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tooltip {
+    transition: none;
+  }
+}
