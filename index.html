@@ -117,6 +117,65 @@
         transition: none;
       }
     }
+
+    nav .controls button {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 8px;
+      font-size: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--accent);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    #code-viewer {
+      position: fixed;
+      top: 5%;
+      left: 10%;
+      width: 80%;
+      height: 90%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: none;
+      flex-direction: column;
+      backdrop-filter: blur(12px);
+    }
+    #code-viewer.show {
+      display: flex;
+    }
+    #code-viewer pre {
+      flex: 1;
+      margin: 0;
+      padding: 16px;
+      overflow: auto;
+    }
+    #code-viewer .code-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+    }
+    #code-viewer .code-tabs button {
+      background: none;
+      border: none;
+      color: inherit;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+    #code-viewer .code-tabs button.active {
+      background: var(--accent);
+      color: #fff;
+    }
+    #code-viewer #close-code {
+      margin-left: auto;
+    }
+    #copy-code {
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -124,12 +183,23 @@
     <div class="controls">
       <input type="text" id="filter" placeholder="Search demos..." />
       <select id="select-menu"></select>
+      <button id="view-code">View Code</button>
       <span class="count" id="menu-count"></span>
     </div>
     <ul id="menu"></ul>
   </nav>
   <div id="preview">
     <iframe id="frame" src=""></iframe>
+  </div>
+  <div id="code-viewer">
+    <div class="code-tabs">
+      <button data-type="html" class="active">HTML</button>
+      <button data-type="css">CSS</button>
+      <button data-type="js">JS</button>
+      <button id="close-code">✕</button>
+    </div>
+    <pre><code id="code-block"></code></pre>
+    <button id="copy-code">Copy</button>
   </div>
   <script>
     const showcases = [
@@ -240,6 +310,22 @@
     const select = document.getElementById('select-menu');
     const filter = document.getElementById('filter');
     const count = document.getElementById('menu-count');
+    const viewCode = document.getElementById('view-code');
+    const codeViewer = document.getElementById('code-viewer');
+    const codeBlock = document.getElementById('code-block');
+    const copyCode = document.getElementById('copy-code');
+    const closeCode = document.getElementById('close-code');
+    const codeTabs = document.querySelectorAll('#code-viewer .code-tabs button[data-type]');
+    let currentPath = showcases[0].path;
+
+    function loadCode(type) {
+      const base = currentPath.replace('index.html', '');
+      const file =
+        type === 'html' ? 'index.html' : type === 'css' ? 'styles.css' : 'script.js';
+      fetch(base + file)
+        .then(r => r.text())
+        .then(t => (codeBlock.textContent = t));
+    }
     count.textContent = `${showcases.length} demos`;
     showcases.forEach((s, i) => {
       const index = String(i + 1).padStart(2, '0');
@@ -259,11 +345,13 @@
         menu.querySelectorAll('button').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         select.selectedIndex = i;
+        currentPath = s.path;
       });
       if (i === 0) {
         btn.classList.add('active');
         frame.src = s.path;
         select.selectedIndex = 0;
+        currentPath = s.path;
       }
       li.appendChild(btn);
       menu.appendChild(li);
@@ -277,6 +365,7 @@
       menu.querySelectorAll('button').forEach(b => b.classList.remove('active'));
       const btn = menu.querySelectorAll('button')[i];
       btn.classList.add('active');
+      currentPath = select.value;
     });
 
     filter.addEventListener('input', () => {
@@ -285,6 +374,24 @@
         const match = li.textContent.toLowerCase().includes(term);
         li.style.display = match ? '' : 'none';
       });
+    });
+
+    viewCode.addEventListener('click', () => {
+      codeViewer.classList.add('show');
+      codeTabs.forEach(b => b.classList.remove('active'));
+      codeTabs[0].classList.add('active');
+      loadCode('html');
+    });
+    closeCode.addEventListener('click', () => codeViewer.classList.remove('show'));
+    codeTabs.forEach(btn =>
+      btn.addEventListener('click', () => {
+        codeTabs.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        loadCode(btn.dataset.type);
+      })
+    );
+    copyCode.addEventListener('click', () => {
+      navigator.clipboard.writeText(codeBlock.textContent);
     });
   </script>
 </body>
