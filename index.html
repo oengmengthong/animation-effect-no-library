@@ -17,6 +17,20 @@
       border-right: 1px solid #ccc;
       overflow-y: auto;
     }
+    nav .controls {
+      padding: 8px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    nav select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+    nav .count {
+      font-size: 0.875rem;
+      color: #555;
+    }
     nav ul {
       list-style: none;
       margin: 0;
@@ -50,6 +64,10 @@
 </head>
 <body>
   <nav>
+    <div class="controls">
+      <select id="select-menu"></select>
+      <span class="count" id="menu-count"></span>
+    </div>
     <ul id="menu"></ul>
   </nav>
   <div id="preview">
@@ -161,21 +179,41 @@
       ];
     const menu = document.getElementById('menu');
     const frame = document.getElementById('frame');
+    const select = document.getElementById('select-menu');
+    const count = document.getElementById('menu-count');
+    count.textContent = `${showcases.length} demos`;
     showcases.forEach((s, i) => {
+      const index = String(i + 1).padStart(2, '0');
+
+      const option = document.createElement('option');
+      option.value = s.path;
+      option.textContent = `${index}. ${s.title}`;
+      select.appendChild(option);
+
       const li = document.createElement('li');
       const btn = document.createElement('button');
-      btn.textContent = `${s.title}`;
+      btn.textContent = `${index}. ${s.title}`;
       btn.addEventListener('click', () => {
         frame.src = s.path;
         menu.querySelectorAll('button').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+        select.selectedIndex = i;
       });
       if (i === 0) {
         btn.classList.add('active');
         frame.src = s.path;
+        select.selectedIndex = 0;
       }
       li.appendChild(btn);
       menu.appendChild(li);
+    });
+
+    select.addEventListener('change', () => {
+      const i = select.selectedIndex;
+      frame.src = select.value;
+      menu.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      const btn = menu.querySelectorAll('button')[i];
+      btn.classList.add('active');
     });
   </script>
 </body>
