@@ -1,0 +1,6 @@
+body{margin:0;height:200vh;display:flex;justify-content:center;align-items:center;perspective:800px;background:#eee;}
+.stack{position:relative;transform-style:preserve-3d;width:200px;height:300px;}
+.card{position:absolute;top:0;left:0;width:100%;height:100%;background:#fff;border-radius:8px;box-shadow:0 10px 20px rgba(0,0,0,0.1);display:flex;align-items:center;justify-content:center;font-size:2rem;}
+.card:nth-child(1){background:#ffccbc;}
+.card:nth-child(2){background:#ffe0b2;}
+.card:nth-child(3){background:#fff9c4;}

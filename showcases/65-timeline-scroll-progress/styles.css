@@ -1,0 +1,6 @@
+body{margin:0;height:200vh;font-family:sans-serif;}
+.timeline{position:relative;margin:0 auto;padding:100px 0;width:200px;}
+.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:4px;background:#ccc;transform:translateX(-50%);}
+.event{position:relative;margin:100px 0;padding-left:40px;}
+.event::before{content:'';position:absolute;left:-6px;top:0;width:16px;height:16px;border-radius:50%;background:#ccc;transition:background .3s;}
+.event.active::before{background:#4caf50;}

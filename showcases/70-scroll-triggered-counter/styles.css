@@ -1,0 +1,2 @@
+body{margin:0;height:200vh;display:flex;justify-content:center;align-items:center;font-size:4rem;font-family:monospace;}
+.counter{background:#111;color:#fff;padding:20px;border-radius:8px;}

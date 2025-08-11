@@ -1,0 +1,8 @@
+body{margin:0;height:100vh;}
+.panels{display:flex;height:100%;}
+.panel{flex:1;position:relative;overflow:hidden;}
+.panel img{width:100%;height:100%;object-fit:cover;}
+.mask{position:absolute;top:0;left:0;width:120%;height:100%;background:#fff;transform:skewX(-20deg) translateX(-100%);animation:reveal 2s forwards;}
+.panel:nth-child(2) .mask{animation-delay:.5s;}
+.panel:nth-child(3) .mask{animation-delay:1s;}
+@keyframes reveal{to{transform:skewX(-20deg) translateX(120%);}}
