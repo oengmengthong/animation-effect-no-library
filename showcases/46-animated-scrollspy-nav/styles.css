@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+.spy {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+.spy a {
+  padding: 1rem;
+  text-decoration: none;
+  color: #333;
+  position: relative;
+}
+.spy .indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: #007aff;
+  width: 0;
+  transform: translateX(0);
+  transition: transform 0.2s, width 0.2s;
+}
+.panel {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .spy .indicator {
+    transition: none;
+  }
+}

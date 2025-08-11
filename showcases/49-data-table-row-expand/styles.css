@@ -1,0 +1,22 @@
+body {
+  font-family: sans-serif;
+  padding: 2rem;
+}
+table {
+  border-collapse: collapse;
+  width: 300px;
+}
+td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+}
+.detail .panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .detail .panel {
+    transition: none;
+  }
+}

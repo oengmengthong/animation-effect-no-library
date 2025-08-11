@@ -1,0 +1,39 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card {
+  position: relative;
+  width: 260px;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  cursor: pointer;
+  overflow: hidden;
+}
+.preview {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.preview img {
+  max-width: 100%;
+  height: auto;
+}
+.card.show .preview {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .preview {
+    transition: none;
+  }
+}

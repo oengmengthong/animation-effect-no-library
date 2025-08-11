@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Command Palette</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <button id="open">Open Palette (⌘K)</button>
+  <div class="overlay" hidden>
+    <div class="palette">
+      <input type="text" aria-label="Command" placeholder="Type a command" />
+      <ul>
+        <li>Open File</li>
+        <li>Save All</li>
+        <li>Toggle Sidebar</li>
+        <li>Close Window</li>
+      </ul>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
