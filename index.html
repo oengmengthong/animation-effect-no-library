@@ -5,39 +5,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Animation Effect Showcase</title>
   <style>
+    :root {
+      --bg: #0d1117;
+      --surface: rgba(255, 255, 255, 0.05);
+      --border: rgba(255, 255, 255, 0.1);
+      --accent: #5c6bf1;
+      --text: #f3f3f3;
+    }
     body {
       margin: 0;
       font-family: system-ui, sans-serif;
       display: flex;
       height: 100vh;
+      background: var(--bg);
+      color: var(--text);
     }
     nav {
-      width: 250px;
-      background: #f7f7f7;
-      border-right: 1px solid #ccc;
+      width: 260px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
       overflow-y: auto;
+      backdrop-filter: blur(12px);
     }
     nav .controls {
-      padding: 8px;
-      border-bottom: 1px solid #e0e0e0;
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--surface);
+      backdrop-filter: inherit;
+      z-index: 1;
     }
+    nav input,
     nav select {
       width: 100%;
       padding: 8px;
       margin-bottom: 8px;
       font-size: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      color: inherit;
+    }
+    nav input::placeholder {
+      color: #999;
     }
     nav .count {
       font-size: 0.875rem;
-      color: #555;
+      color: #aaa;
     }
     nav ul {
       list-style: none;
       margin: 0;
-      padding: 0;
+      padding: 0 0 8px;
     }
     nav li {
-      border-bottom: 1px solid #e0e0e0;
+      border-bottom: 1px solid var(--border);
+      opacity: 0;
+      transform: translateY(4px);
+      animation: fadeInUp 0.4s ease forwards;
     }
     nav button {
       width: 100%;
@@ -47,24 +73,56 @@
       text-align: left;
       cursor: pointer;
       font-size: 1rem;
+      color: inherit;
+      transition: background 0.3s, transform 0.2s;
     }
-    nav button:hover,
+    nav button:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateX(4px);
+    }
     nav button.active {
-      background: #e0e0e0;
+      background: var(--accent);
+      color: #fff;
     }
     #preview {
       flex: 1;
+      background: var(--bg);
     }
     #preview iframe {
       width: 100%;
       height: 100%;
       border: none;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    #preview iframe.loaded {
+      opacity: 1;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      nav li {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+      nav button {
+        transition: none;
+      }
+      #preview iframe {
+        transition: none;
+      }
     }
   </style>
 </head>
 <body>
   <nav>
     <div class="controls">
+      <input type="text" id="filter" placeholder="Search demos..." />
       <select id="select-menu"></select>
       <span class="count" id="menu-count"></span>
     </div>
@@ -180,6 +238,7 @@
     const menu = document.getElementById('menu');
     const frame = document.getElementById('frame');
     const select = document.getElementById('select-menu');
+    const filter = document.getElementById('filter');
     const count = document.getElementById('menu-count');
     count.textContent = `${showcases.length} demos`;
     showcases.forEach((s, i) => {
@@ -191,9 +250,11 @@
       select.appendChild(option);
 
       const li = document.createElement('li');
+      li.style.animationDelay = `${i * 30}ms`;
       const btn = document.createElement('button');
       btn.textContent = `${index}. ${s.title}`;
       btn.addEventListener('click', () => {
+        frame.classList.remove('loaded');
         frame.src = s.path;
         menu.querySelectorAll('button').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
@@ -207,13 +268,23 @@
       li.appendChild(btn);
       menu.appendChild(li);
     });
+    frame.addEventListener('load', () => frame.classList.add('loaded'));
 
     select.addEventListener('change', () => {
       const i = select.selectedIndex;
+      frame.classList.remove('loaded');
       frame.src = select.value;
       menu.querySelectorAll('button').forEach(b => b.classList.remove('active'));
       const btn = menu.querySelectorAll('button')[i];
       btn.classList.add('active');
+    });
+
+    filter.addEventListener('input', () => {
+      const term = filter.value.toLowerCase();
+      Array.from(menu.children).forEach(li => {
+        const match = li.textContent.toLowerCase().includes(term);
+        li.style.display = match ? '' : 'none';
+      });
     });
   </script>
 </body>
