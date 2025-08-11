@@ -24,6 +24,8 @@ styles.css
 script.js
 README.md  # short notes: technique, perf, accessibility
 
+Once running, use the "View Code" button on the gallery page to preview and copy the HTML, CSS, and JavaScript for any demo.
+
 
 ⸻
 
@@ -174,7 +176,6 @@ Each line: Title — what it demonstrates.
 
 ✅ Roadmap
 	•	Add dark/light variants.
-	•	Add “copy code” buttons.
 	•	Add perf test toggles & reduced-motion switch.
 	•	Document alternative approaches (CSS-only vs JS-assisted).
 
