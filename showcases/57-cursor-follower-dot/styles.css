@@ -1,0 +1,17 @@
+body{
+  margin:0;
+  height:100vh;
+  background:#fafafa;
+  cursor:none;
+}
+.dot{
+  position:fixed;
+  top:0;
+  left:0;
+  width:12px;
+  height:12px;
+  background:#ff6f91;
+  border-radius:50%;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+}

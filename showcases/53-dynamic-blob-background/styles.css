@@ -1,0 +1,19 @@
+html,body{
+  height:100%;
+  margin:0;
+}
+body{
+  background:#111;
+}
+.blobs{
+  width:100%;
+  height:100%;
+}
+.blob1 path{
+  fill:#ff6f91;
+  mix-blend-mode:multiply;
+}
+.blob2 path{
+  fill:#ffc75f;
+  mix-blend-mode:multiply;
+}
