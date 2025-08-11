@@ -1,0 +1,4 @@
+body{margin:0;display:flex;align-items:center;justify-content:center;height:100vh;background:#000;}
+.gallery{position:relative;display:grid;grid-template-columns:repeat(3,100px);grid-gap:10px;}
+.gallery img{width:100px;height:100px;object-fit:cover;}
+.gallery::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.8);pointer-events:none;mask:radial-gradient(circle at var(--x,50%) var(--y,50%),transparent 80px,black 81px);}

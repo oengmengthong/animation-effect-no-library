@@ -1,0 +1,7 @@
+body{display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:#fdfdfd;}
+.switch{position:relative;width:80px;height:40px;}
+.switch input{opacity:0;width:0;height:0;}
+.slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#ccc;border-radius:40px;transition:background .4s;}
+.slider::before{content:"";position:absolute;height:32px;width:32px;left:4px;top:4px;background:white;border-radius:50%;transition:transform .4s cubic-bezier(.68,-0.55,.27,1.55);}
+#toggle:checked + .slider{background:#4caf50;}
+#toggle:checked + .slider::before{transform:translateX(40px);}
