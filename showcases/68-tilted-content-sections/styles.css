@@ -1,0 +1,5 @@
+body{margin:0;font-family:sans-serif;}
+.tilt{height:100vh;display:flex;align-items:center;transform:skewY(-4deg);color:#fff;background-attachment:fixed;background-size:cover;}
+.tilt .inner{transform:skewY(4deg);margin:0 auto;font-size:3rem;}
+.one{background-image:url('https://picsum.photos/seed/t1/1200/800');}
+.two{background-image:url('https://picsum.photos/seed/t2/1200/800');}

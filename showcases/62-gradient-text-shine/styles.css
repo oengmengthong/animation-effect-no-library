@@ -1,0 +1,20 @@
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#111;
+}
+.shine{
+  font-size:4rem;
+  background:linear-gradient(90deg,#fff,#888,#fff);
+  background-size:200%;
+  -webkit-background-clip:text;
+  color:transparent;
+  animation:shine 2s linear infinite;
+}
+@keyframes shine{
+  from{background-position:200%}
+  to{background-position:-200%}
+}
