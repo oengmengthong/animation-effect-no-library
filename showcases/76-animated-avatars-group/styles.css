@@ -1,0 +1,8 @@
+body{display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:#fff;}
+.avatars{display:flex;}
+.avatars img{width:60px;height:60px;border-radius:50%;border:2px solid #fff;margin-left:-15px;transition:transform .3s;box-shadow:0 2px 4px rgba(0,0,0,.2);}
+.avatars:hover img{transform:translateX(calc(var(--i)*20px));}
+.avatars img:nth-child(1){--i:0;}
+.avatars img:nth-child(2){--i:1;}
+.avatars img:nth-child(3){--i:2;}
+.avatars img:nth-child(4){--i:3;}

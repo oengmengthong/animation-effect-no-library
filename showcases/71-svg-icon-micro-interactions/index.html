@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SVG Icon Micro-Interactions</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<svg id="icon" viewBox="0 0 100 100" class="icon">
+  <path fill="none" stroke="#e91e63" stroke-width="8" d="M20,50 L80,50">
+    <animate id="toTriangle" attributeName="d" to="M50,20 L80,80 L20,80 Z" dur="0.3s" fill="freeze" begin="icon.mouseover" />
+    <animate attributeName="d" to="M20,50 L80,50" dur="0.3s" fill="freeze" begin="icon.mouseout" />
+  </path>
+</svg>
+<script src="script.js"></script>
+</body>
+</html>
